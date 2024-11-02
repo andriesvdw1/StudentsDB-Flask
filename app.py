@@ -25,8 +25,8 @@ def init_db():
 
 @app.route('/')
 def index():
-    #return render_template('index.html')
-    return render_template('construction.html')
+    return render_template('index.html')
+    #return render_template('construction.html')
 #changed to under construction for now
 
 @app.route('/students', methods=['GET'])
