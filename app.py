@@ -25,9 +25,13 @@ def init_db():
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/students', methods=['GET'])
+def list_students():
     with get_db() as conn:
         students = conn.execute('SELECT * FROM students').fetchall()
-    return render_template('index.html', students=students)
+    return render_template('students.html', students=students)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_student():
@@ -38,7 +42,7 @@ def create_student():
         with get_db() as conn:
             conn.execute('INSERT INTO students (first_name, last_name, student_number) VALUES (?, ?, ?)',
                          (first_name, last_name, student_number))
-        return redirect(url_for('index'))
+        return redirect(url_for('list_students'))
     return render_template('create.html')
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -52,14 +56,23 @@ def update_student(id):
         with get_db() as conn:
             conn.execute('UPDATE students SET first_name = ?, last_name = ?, student_number = ? WHERE id = ?',
                          (first_name, last_name, student_number, id))
-        return redirect(url_for('index'))
+        return redirect(url_for('list_students'))
     return render_template('update.html', student=student)
 
 @app.route('/delete/<int:id>', methods=['POST'])
 def delete_student(id):
     with get_db() as conn:
         conn.execute('DELETE FROM students WHERE id = ?', (id,))
-    return redirect(url_for('index'))
+    return redirect(url_for('list_students'))
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_students():
+    students = []
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        with get_db() as conn:
+            students = conn.execute("SELECT * FROM students WHERE first_name = ?", (first_name,)).fetchall()
+    return render_template('search.html', students=students)
 
 if __name__ == '__main__':
     init_db()
