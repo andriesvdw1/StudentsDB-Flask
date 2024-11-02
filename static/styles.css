@@ -8,6 +8,8 @@ body {
     margin: 0 auto;
 }
 
+.error{color:#99D9EA;}
+
 h1 {
     text-align: center;
     color:#99D9EA;
@@ -17,7 +19,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background-color:#f0ebd8;
+    background-color:#99D9EA;
     color:#3F48CC;
 }
 
@@ -29,7 +31,6 @@ th, td {
     padding: 10px;
     text-align: left;
 }
-td{font-weight: bold;}
 
 form {
     margin: 10px 0;
@@ -41,5 +42,4 @@ background-color:#EFEFEF;
 border: 1px solid black;
 border-radius:20px;
 padding:5px;
-font-weight: bold;
 }
