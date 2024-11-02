@@ -29,6 +29,7 @@ th, td {
     padding: 10px;
     text-align: left;
 }
+td{font-weight: bold;}
 
 form {
     margin: 10px 0;
