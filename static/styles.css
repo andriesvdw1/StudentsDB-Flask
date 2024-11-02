@@ -37,9 +37,12 @@ form {
 }
 
 a{color:black;}
-.option{color:#black;
-background-color:#EFEFEF;
-border: 1px solid black;
-border-radius:20px;
-padding:5px;
+.option{
+    color: #black;
+    background-color: #c6e2f3;
+    border: 2px solid #c200ff;
+    border-radius: 20px;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
 }
