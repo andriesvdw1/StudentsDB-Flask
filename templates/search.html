@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         function showAlert() {
-            alert("No student with that first name found!");
+                alert("No student with that first name found!");
         }
     </script>
 </head>
@@ -39,9 +39,7 @@
             </tbody>
         </table>
     {% else %}
-        <script>
-            showAlert();
-        </script>
+            <b class="error">No student with that name in table. Please enter a different name.</b>
     {% endif %}
 
     <a href="{{ url_for('index') }}" class='option'>Back</a>
